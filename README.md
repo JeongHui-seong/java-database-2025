@@ -81,3 +81,23 @@ Java개발자 과장 Database 리포지토리 (Oracle)
     - 문자함수 : [SQL](./Day01/sql02_함수.sql)
     - 숫자함수
 ## 2일차
+- 함수(계속)
+    - 문자함수부터 : 
+    - 숫자함수
+    - 날짜함수
+    - 형변환함수
+- 데이터베이스 타입형
+    - **CHAT(n)** - 고정형 문자열, 최대 2000바이트
+        - CHAR(20)으로 'Hello World'를 저장하면, 'Hello World        '로 저장 (공백포함됨)
+        - 기준코드나 반드시 자리수를 지켜야하는 데이터 필요, 주민번호 등
+    - **VARCHAR2(n)** - 가변형 문자열, 최대 4000바이트
+        - VARCHAR2(20)로 'Hello World', 'Hello World'로 저장
+    - INTERGER - 모든 데이터의 기준. 4byte, 정수를 담는 데이터형
+    - FLOAT(p) - 실수형 타입, 최대 22byte 
+    - NUMBER(p, s) - 숫자값, p 전체자리수, s 소수점길이, 최대 22byte
+    - DATE - 날짜타입
+    - LONG(n) - 가변길이 문자열, 최대 2Gbyte
+    - LONG RAW(n) - 원시이진 데이터, 최대 2Gbyte
+    - CLOB - 대용량 텍스트 데이터타입, 최대 4Gbyte
+    - BLOB - 대용량 바이너리 데이터타입, 최대 4Gbyte
+    - BFILE - 외부 파일 에 저장된 데이터, 최대 4Gbyte
