@@ -56,3 +56,38 @@ SELECT empno, ename, to_char(hiredate, 'yy/mm/dd')
  WHERE to_char(hiredate,'mm') = 01
     or to_char(hiredate,'mm') = 02
     or to_char(hiredate,'mm') = 03;
+
+-- 108P 형 변환 함수
+SELECT empno, ename, to_char(hiredate,'YYYY-MM-DD') AS hiredate, to_char((sal*12)+comm, '$99,999') AS sal, to_char((((sal*12)+comm) + ((sal*12)+comm)*15/100),'$99,999') AS "15% UP"
+  FROM emp
+ WHERE comm IS NOT NULL;
+
+-- 112P NVL 함수
+SELECT profno, name, pay, nvl(bonus,0), (pay*12 + nvl(bonus,0)) AS total
+  FROM professor
+ WHERE deptno = 201;
+
+-- 113P NVL2 함수
+SELECT empno, ename, comm, nvl2(comm,'Exist','NULL') AS "NVL2"
+  FROM emp
+ WHERE deptno = 30;
+
+-- 114P DECODE1
+SELECT DEPTNO, NAME, DECODE(DEPTNO, '101', 'Computer Engineering', null) AS dname
+  FROM PROFESSOR;
+
+-- 115P DECODE2
+SELECT deptno, name, decode(deptno, '101', 'Computer Engineering', 'ETC') AS dname
+  FROM professor;
+
+-- 116P DECODE3
+SELECT deptno, name, decode(deptno, '101', 'Computer Engineering', '102', 'Multimedia Engineering', '103', 'Software Engineering', 'ETC') AS dname
+  FROM professor;
+
+-- 117P DECODE4
+SELECT deptno, name, decode(deptno, '101', decode(name, 'Audie Murphy', 'BEST!', null)) AS etc
+  FROM professor;
+
+-- 118P DECODE5
+SELECT deptno, name, decode(deptno, '101', decode(name, 'Audie Murphy','BEST!','GOOD!'),null)
+  FROM professor;
