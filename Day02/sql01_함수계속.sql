@@ -107,7 +107,7 @@ SELECT '5.0'
      -- to_number('hello') 숫자로 변경할 수 없는 형태
   FROM dual;
 
--- TO_DATE() 날짜형태를 문자형으로
+-- TO_DATE() 문자형을 날짜형으로
 SELECT '2025-03-12'
      , to_date('2025-03-12') + 10 -- 날짜형으로 바꾸면 연산가능
   FROM dual;
