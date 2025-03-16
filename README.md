@@ -154,7 +154,7 @@ Java개발자 과장 Database 리포지토리 (Oracle)
 ## 4일차
 - VS Code DB플러그인
     - 확장 > Database 검색 > Database Client(Weijan Chen) > 확장 중 Database 선택
-<img src = "./image/db002.png" width = 700>
+    <img src = "./image/db002.png" width = 700>
 - DML [INSERT 쿼리](./Day04/sql01_INSERT.sql) [UPDATE,DELETE 쿼리](./Day04/sql02_UPDATE_DELETE.sql)
     - INSERT - 테이블에 새로운 데이터를 삽입하는 명령
         - 한 건씩 삽입
