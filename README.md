@@ -163,6 +163,13 @@ Java개발자 과장 Database 리포지토리 (Oracle)
         VALUES (값리스트);
         ```
         - 여러건 한꺼번에 삽입
+        ```sql
+        INSERT ALL
+                INTO 테이블명 VALUES (값리스트)
+                INTO 테이블명 VALUES (값리스트)
+                ...
+        SELECT * FROM DUAL;
+        ```
     - UPDATE - 데이터 변경 WHERE 조건을 없이 실행하면 테이블 모든 데이터가 수정(주의요망)
         ```sql
         UPDATE 테이블명 SET
@@ -224,6 +231,48 @@ Java개발자 과장 Database 리포지토리 (Oracle)
     CREATE INDEX 인덱스명 ON 테이블명(인덱스를 걸 컬럼명);
     ```
 ## 5일차
-- VIEW
-- 서브쿼리
-- 시퀀스
+- VIEW [뷰](./DAY05/sql01_VIEW.sql)
+    - 기존 테이블에서 권한별로 보일 수 있는 컬럼을 지정해서 만드는 개체 (보안목적)
+    - 기존 테이블 중 개인정보나 중요한 부분이 있으면 제외하고 보일 수 있음
+    - 뷰라도 INSERT, UPDATE, DELETE 가능. 단일 뷰에서만
+        ```sql
+        CREATE VIEW 뷰명
+        AS
+            SELECT 쿼리;
+        [WITH READ ONLY]
+        ```
+    - 복합뷰는 두 개 이상의 테이블을 조인해서 만든 뷰. DML기능 불가
+
+- 서브쿼리 [서브쿼리](./DAY05/sql02_SUBQUERY.sql)
+    - 메인쿼리를 도와주는 하위쿼리 뜻함 소괄호() 내에 포함됨
+    - 단일행 서브쿼리, 다중행 서브쿼리마다 사용법 다름
+    - SELECT절(스칼라) 서브쿼리, FROM절 서브쿼리, WHERE절 서브쿼리
+    - 서브쿼리는 JOIN으로 거의 다 변경 가능 (안되는 경우도 있음)
+
+- 시퀀스 [시퀀스](./DAY05/sql03_SEQUENCE.sql)
+    - 번호로 지정된 PK값을 자동으로 삽입할 수 있도록 도와주는 기능
+    - 없어도 기능에는 차이가 없지만 효율을 위해서 사용
+    - ORACLE만 존재
+    ```sql
+    CREATE SEQUENCE 시퀀스명
+    INCREMENT BY 1 -- 증가값
+    START WITH 1 -- 초기 시작값
+    [MAXVALUE 99999] -- 최대 증가값
+    [CYCLE] -- 최대 증가값에 도달하면 다시 처음으로 돌아갈 것인지
+    [CACHE] -- 번호 증가 캐시(대용량 삽입시만 관계)
+
+    시퀀스명.NEXTVAL
+    시퀀스명.CURRVAL
+    ```
+
+- 실습 [실습](./DAY05/sql04_실습.sql)
+
+- 사용자 계정 권한 [쿼리](./DAY05/sql05_사용자계정관리.sql)
+    - 사용자 생성 후 권한(롤)을 부여해야 스키마를 사용가능
+
+        ```SQL
+        -- 권한 부여
+        GRANT 권한|롤 TO 사용자 [WITH ADMIN OPTION];
+        -- 권한 해제
+        REVOKE 권한|롤 FROM 사용자;
+        ```
