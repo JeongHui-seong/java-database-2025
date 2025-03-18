@@ -43,8 +43,28 @@ SELECT D.DNAME, S1.MAX_HEIGHT, S2.NAME, S2.HEIGHT
    AND S1.MAX_HEIGHT = S2.HEIGHT;
 
 -- P421 EX4
-SELECT * FROM STUDENT;
+SELECT S1.GRADE, S1.NAME, S1.HEIGHT, S2.AVG_HEIGHT
+  FROM STUDENT S1, (SELECT GRADE, AVG(HEIGHT) AVG_HEIGHT
+  					  FROM STUDENT
+ 					 GROUP BY GRADE
+ 					 ORDER BY GRADE) S2
+ WHERE S1.GRADE = S2.GRADE
+   AND S1.HEIGHT > S2.AVG_HEIGHT
+ ORDER BY GRADE
+ 
+-- P421 EX5
+SELECT *
+  FROM (SELECT DENSE_RANK() OVER (ORDER BY PAY DESC) AS RANKING, NAME, PAY
+  		  FROM PROFESSOR)
+ WHERE RANKING <= 5;
 
+-- P422 EX6
+SELECT inTbl.NUM, intbl.profno, intbl.name, intbl.pay, sum(pay), round(avg(pay), 1)
+  FROM (SELECT ROW_NUMBER() OVER (ORDER BY profno) AS num
+             , profno, name, pay
+		  FROM professor) inTbl
+ GROUP BY ceil(intbl.Num/3), ROLLUP((inTbl.NUM, intbl.profno, intbl.name, intbl.pay))
+ ORDER BY ceil(intbl.Num/3);
 
 
 COMMIT;

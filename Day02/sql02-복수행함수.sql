@@ -133,3 +133,4 @@ SELECT employee_id, LAST_name, salary
 	 , row_number() OVER (ORDER BY salary DESC) AS 행번호
   FROM employees;
   
+COMMIT;

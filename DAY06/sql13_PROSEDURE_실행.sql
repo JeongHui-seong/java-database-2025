@@ -1,0 +1,24 @@
+-- 
+SELECT * FROM EMP;
+
+-- 프로시저 연습 실행
+CALL PROFESSOR_INFO(2001);
+
+CALL EMP_INFO(7934);
+
+-- FOR문
+DECLARE 
+	V_SUM NUMBER;
+BEGIN
+	V_SUM := 0;
+	FOR i IN 1..100 LOOP
+		V_SUM := V_SUM + i;
+	END LOOP;
+	DBMS_OUTPUT.PUT_LINE(V_SUM);
+END;
+/
+
+-- 커서로 반복하는 프로시저 실행
+CALL EMP_LIST();
+
+COMMIT;
