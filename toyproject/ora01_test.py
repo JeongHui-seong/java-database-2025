@@ -19,8 +19,8 @@ query = 'SELECT * FROM STUDENTS' # 파이썬에서 쿼리 호출 시 ; 삭제
 cursor.execute(query)
 
 # 불러온 데이터 처리
-for i, item in enumerate(cursor, start=1):
-    print(item)
+for i, (std_id, std_name, std_mobile, std_regyear) in enumerate(cursor, start=1):
+    print(std_id, std_name, std_mobile, std_regyear)
 
 cursor.close()
 conn.close()
