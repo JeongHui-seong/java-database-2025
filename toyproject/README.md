@@ -25,7 +25,7 @@ Python GUI - Oracle연동 프로그램
 
 - QtDesigner 설치
     - https://build-system.fman.io/qt-designer-download 다운로드 후 설치
-    <img src = "../image/db005.png">
+    <img src = "../image/db005.png" width = 600>
 
 ### PyQt5 개발
 1. PyQt 모듈 사용 윈앱 만들기
@@ -33,7 +33,7 @@ Python GUI - Oracle연동 프로그램
 3. PyQt 위젯 사용법(레이블, 버튼, ...)
 4. 시그널(이벤트) 처리 방법
 5. QtDesigner로 화면 디자인, PyQt와 연동
-<img src = "../image/db004.png">
+<img src = "../image/db004.png" width = 600>
 
 #### Oracle연동 GUI개발 시작
 - 오라클 Python연동 DB(스키마) 생성
@@ -78,8 +78,24 @@ Python GUI - Oracle연동 프로그램
     - 오라클 모듈
         - oracledb - 오라클 최선버전에 매칭
         - **cx_Oracle** - 구버전까지 잘 됨
-    - 콘솔에서 `> pip install cx_Oracle`
     - Microsoft C++ Build Tools 필요 [Microsoft C++ Build Tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/)
+        - Visual Studio Installer 실행
+        - 개별 구성요소에서 아래 요소 선택
+            - [x] MVSC V1XX - VS 20XX C++ x64/x86 빌드 도구
+            - [x] C++ CMake Tools for Window
+            - [x] Window 10 SDK(10.0.xxxxx)
+        - 설치
+    - 콘솔에서 `> pip install cx_Oracle`
+    - 콘솔 오라클 연동 : [python](./)
+        - DIP-1047 오류 발생
+        - 64-bit Oracle Client Library가 OS에 설치되지 않았기 때문에 발생하는 현상
+        - 아래 사이트에서 버전에 맞는 Oracle Client를 다운로드
+        - https://www.oracle.com/kr/database/technologies/instant-client/winx64-64-downloads.html
+        - 11g 다운로드
+        - 압축해제(C:\DEV\Tool\instantclient_11_2), 실행창에 'sysdm.cpl', 시스템속성 > 고급 > 환경변수 > 시스템 변수 > Path(C:\DEV\Tool\instantclient_11_2) 등록
+        - 재부팅
+    - 콘솔 테스트 결과
+        <img src = '../image/db006.png' width = 600>
 - QtDesigner로 화면 구성
 - PyQt로 Oracle 연동 CRUD 구현
 
